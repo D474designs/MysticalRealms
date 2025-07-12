@@ -140,7 +140,7 @@
                         {
                             text: "Seek the heart of the Enchanted Forest",
                             nextScene: "enchantedForestClearing",
-                        },
+                        }, // New choice
                     ],
                 },
                 windingPath: {
@@ -204,7 +204,7 @@
                         {
                             text: "Seek an ancient library within the ruins",
                             nextScene: "ancientLibrary",
-                        },
+                        }, // New choice
                         {
                             text: "Go back to the Ancient Oak Clearing",
                             nextScene: "windingPath",
@@ -232,11 +232,11 @@
                         {
                             text: "Dive into the shimmering waters to find a sunken temple",
                             nextScene: "sunkenTemple",
-                        },
+                        }, // New choice
                         {
                             text: "Explore the shimmering lake further upstream",
                             nextScene: "shimmeringLake",
-                        },
+                        }, // New choice
                     ],
                 },
                 flickeringLight: {
@@ -256,7 +256,7 @@
                         {
                             text: "Venture deeper into the mystic cave system",
                             nextScene: "mysticCave",
-                        },
+                        }, // New choice
                         {
                             text: "Go back to the Dense Thicket",
                             nextScene: "overgrownTrail",
@@ -293,7 +293,7 @@
                         {
                             text: "Explore the crystal caverns beyond",
                             nextScene: "crystalCaverns",
-                        },
+                        }, // New choice
                         {
                             text: "Go back up the staircase",
                             nextScene: "woodenDoor",
@@ -326,7 +326,7 @@
                         {
                             text: "Discover the whispering falls' secret",
                             nextScene: "whisperingFalls",
-                        },
+                        }, // New choice
                         {
                             text: "Go back to the Shimmering River",
                             nextScene: "shimmeringRiver",
@@ -379,11 +379,11 @@
                         {
                             text: "Look for a celestial observatory on a distant peak",
                             nextScene: "celestialObservatory",
-                        },
+                        }, // New choice
                         {
                             text: "Venture into the perilous mountain pass",
                             nextScene: "perilousPass",
-                        },
+                        }, // New choice
                     ],
                 },
                 sweetScent: {
@@ -436,7 +436,7 @@
                         {
                             text: "Examine the shrine",
                             nextScene: "forgottenShrine",
-                        },
+                        }, // Leads to new scene
                         {
                             text: "Descend back down the incline",
                             nextScene: "rockyIncline",
@@ -868,7 +868,7 @@
                 // --- NEW ENDING SCENES ---
                 endingSuccess: {
                     description:
-                        "Congratulations, brave adventurer! You have successfully navigated the Mystic Realms, faced its challenges, and uncovered its many wonders. Your journey has been a testament to your courage, wisdom, and perseverance. The echoes of your footsteps will forever resonate through these enchanted lands. May your future adventures be just as fulfilling, and may you always carry the spirit of discovery within you. The realms await your next grand tale! Farewell, and may your path always be illuminated by the magic you've found.\n\n✨🌟🏆",
+                        "Congratulations, brave adventurer! You have successfully navigated the Mystic Realms, faced its challenges, and uncovered its many wonders. Your journey has been a testament to your courage, wisdom, and perseverance. The echoes of your footsteps will forever resonate through these enchanted lands. May your future adventures be just as fulfilling, and may you always carry the spirit of discovery within you. The realms await your next grand tale! Farewell, and may your path always be illuminated by the magic you've found.\n\n<div style='text-align: center;'>✨🌟🏆</div>",
                     backgroundStyle:
                         "linear-gradient(to bottom right, #000000, #333333)",
                     choices: [
@@ -881,7 +881,7 @@
                 },
                 endingKnowledge: {
                     description:
-                        "Your quest for understanding has led you to the deepest truths of the Mystic Realms. You've unraveled ancient mysteries, deciphered forgotten lore, and gained insights that few mortals ever achieve. The knowledge you've acquired is a treasure more valuable than gold, empowering you for whatever lies ahead. The universe whispers its secrets to you, and you are now a true scholar of the arcane.\n\n📚🔮🧠",
+                        "Your quest for understanding has led you to the deepest truths of the Mystic Realms. You've unraveled ancient mysteries, deciphered forgotten lore, and gained insights that few mortals ever achieve. The knowledge you've acquired is a treasure more valuable than gold, empowering you for whatever lies ahead. The universe whispers its secrets to you, and you are now a true scholar of the arcane.\n\n<div style='text-align: center;'>📚🔮🧠</div>",
                     backgroundStyle:
                         "linear-gradient(to bottom right, #1a0a2a, #3a1a5a)",
                     choices: [
@@ -897,7 +897,7 @@
                 },
                 endingPeace: {
                     description:
-                        "You have found profound tranquility amidst the wonders of the Mystic Realms. Your journey has been one of harmony with nature, discovering serene havens and experiencing the gentle magic of the land. A deep sense of calm now resides within you, a testament to the peace you've cultivated. The whispers of the wind and the gentle flow of water will forever guide your spirit.\n\n🍃💧🧘",
+                        "You have found profound tranquility amidst the wonders of the Mystic Realms. Your journey has been one of harmony with nature, discovering serene havens and experiencing the gentle magic of the land. A deep sense of calm now resides within you, a testament to the peace you've cultivated. The whispers of the wind and the gentle flow of water will forever guide your spirit.\n\n<div style='text-align: center;'>🍃💧🧘</div>",
                     backgroundStyle:
                         "linear-gradient(to bottom right, #27ae60, #1abc9c)",
                     choices: [
@@ -913,7 +913,7 @@
                 },
                 endingChallenge: {
                     description:
-                        "You have faced the most daunting trials of the Mystic Realms and emerged victorious! Your courage and resilience have been tested, and you have proven yourself to be a true champion. Every perilous step and every obstacle overcome has forged you into a formidable adventurer. The scars of your journey are badges of honor, and your legend will be whispered among the brave for generations to come.\n\n⚔️🛡️🔥",
+                        "You have faced the most daunting trials of the Mystic Realms and emerged victorious! Your courage and resilience have been tested, and you have proven yourself to be a true champion. Every perilous step and every obstacle overcome has forged you into a formidable adventurer. The scars of your journey are badges of honor, and your legend will be whispered among the brave for generations to come.\n\n<div style='text-align: center;'>⚔️🛡️🔥</div>",
                     backgroundStyle:
                         "linear-gradient(to bottom right, #6d4c41, #3e2723)",
                     choices: [
@@ -973,6 +973,20 @@
                     console.error("Scene not found:", sceneId);
                     return;
                 }
+
+                // Reset the game link button on new scene load
+                gameLinkButton.textContent = "Add Your Game Link Here";
+                gameLinkButton.classList.remove(
+                    "bg-green-600",
+                    "from-green-600",
+                    "to-emerald-600",
+                );
+                gameLinkButton.classList.add(
+                    "bg-purple-600",
+                    "from-purple-600",
+                    "to-indigo-600",
+                );
+                gameLinkButton.onclick = showGameLinkSelectionModal; // Reset its click handler
 
                 // Fade out the old background
                 backgroundLayersContainer.style.opacity = "0";
@@ -1071,7 +1085,7 @@
                 );
                 modalContent.innerHTML = `
                 <h2 class="text-2xl font-bold mb-6 text-center">Choose Your Game</h2>
-                <div id="game-links-list" class="flex flex-col gap-4 mb-6">
+                <div id="game-links-list" class="flex flex-col gap-4 mb-6 max-h-60 overflow-y-auto">
                     <!-- Game links will be inserted here -->
                 </div>
                 <button id="close-modal-button" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
@@ -1283,7 +1297,7 @@
                 renderScene(currentSceneId);
             };
         </script>
-                <!-- // D474designs | Modifications, and fixes by JOCV-III ///////
+        <!-- // D474designs | Modifications, and fixes by JOCV-III ///////
                 // All Rights Reserved /////// -->
     </body>
 </html>
