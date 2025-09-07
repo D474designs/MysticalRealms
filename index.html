@@ -1,96 +1,126 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mystic Realms Adventure</title>
-    <!-- Tailwind CSS CDN for styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Custom CSS for the game-link-button animation and font */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Mystic Realms Adventure</title>
+        <!-- Tailwind CSS CDN for styling -->
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            /* Custom CSS for the game-link-button animation and font */
+            @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap");
 
-        body {
-            font-family: 'Inter', sans-serif;
-            overflow: hidden; /* Prevent scrollbars due to full-screen background */
-        }
+            body {
+                font-family: "Inter", sans-serif;
+                overflow: hidden; /* Prevent scrollbars due to full-screen background */
+            }
 
-        /* Basic button styles for choices */
-        .choice-button {
-            @apply px-6 py-3 bg-blue-700 text-white font-semibold rounded-lg shadow-md
+            /* Basic button styles for choices */
+            .choice-button {
+                @apply px-6 py-3 bg-blue-700 text-white font-semibold rounded-lg shadow-md
                    hover:bg-blue-800 transition-colors duration-200 ease-in-out
                    transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500;
-        }
+            }
 
-        /* Specific styles for the central game link button */
-        #game-link-button {
-            /* Already styled with Tailwind classes in HTML for animation */
-        }
+            /* Specific styles for the central game link button */
+            #game-link-button {
+                /* Already styled with Tailwind classes in HTML for animation */
+            }
 
-        /* Keyframe animation for a subtle pulse effect (optional, but nice) */
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
-        }
+            /* Keyframe animation for a subtle pulse effect (optional, but nice) */
+            @keyframes pulse {
+                0% {
+                    transform: scale(1);
+                }
+                50% {
+                    transform: scale(1.02);
+                }
+                100% {
+                    transform: scale(1);
+                }
+            }
 
-        /* Apply pulse animation to the game-link-button */
-        #game-link-button:hover {
-            animation: pulse 1.5s infinite;
-        }
+            /* Apply pulse animation to the game-link-button */
+            #game-link-button:hover {
+                animation: pulse 1.5s infinite;
+            }
 
-        /* Styles for the textarea in the edit links modal */
-        #game-links-textarea {
-            @apply w-full p-3 bg-gray-700 border border-gray-600 rounded-md text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500;
-            min-height: 200px;
-            font-family: monospace; /* Monospaced font for JSON input */
-        }
+            /* Styles for the textarea in the edit links modal */
+            #game-links-textarea {
+                @apply w-full p-3 bg-gray-700 border border-gray-600 rounded-md text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500;
+                min-height: 200px;
+                font-family: monospace; /* Monospaced font for JSON input */
+            }
 
-        /* Background container for CSS gradients */
-        #background-layers-container {
-            transition: background-image 1s ease-in-out, opacity 0.5s ease-in-out; /* Smooth transition for background */
-            background-size: cover;
-            background-position: center center;
-        }
-    </style>
-</head>
-<body class="bg-gray-900">
-    <!-- Main game container -->
-    <div id="game-container" class="relative min-h-screen flex flex-col items-center justify-center text-white font-inter p-4">
-        <!-- Container for background image layers (now uses CSS backgrounds) -->
-        <div id="background-layers-container" class="absolute inset-0 w-full h-full overflow-hidden">
-            <!-- Background will be set via JavaScript using CSS properties -->
-        </div>
+            /* Background container for CSS gradients */
+            #background-layers-container {
+                transition:
+                    background-image 1s ease-in-out,
+                    opacity 0.5s ease-in-out; /* Smooth transition for background */
+                background-size: cover;
+                background-position: center center;
+            }
+        </style>
+    </head>
+    <body class="bg-gray-900">
+        <!-- The 47th Soc.
+        🙂💯🫠⭐🔥👍🤌🐝🌐💌👌✌️🤟✊🍀🌳🐜🎃🎯🤿🔫👾🃏🎟️💰🩻⏳🔔📯🗡️🛡️⚪🗯️😶‍🌫️🤣
+        https://www.reddit.com/r/47thSociety/ -->
 
-        <!-- Overlay for text and buttons to ensure readability -->
-        <div class="relative z-10 bg-black bg-opacity-70 rounded-xl p-8 max-w-3xl text-center shadow-lg border border-gray-700">
-            <!-- Scene description text -->
-            <div id="scene-description" class="text-lg mb-6 leading-relaxed text-gray-200"></div>
-
-            <!-- Container for choice buttons -->
-            <div id="choices-container" class="flex flex-wrap justify-center gap-4 mb-8">
-                <!-- Choice buttons will be inserted here by JavaScript -->
+        <!-- Main game container -->
+        <div
+            id="game-container"
+            class="relative min-h-screen flex flex-col items-center justify-center text-white font-inter p-4"
+        >
+            <!-- Container for background image layers (now uses CSS backgrounds) -->
+            <div
+                id="background-layers-container"
+                class="absolute inset-0 w-full h-full overflow-hidden"
+            >
+                <!-- Background will be set via JavaScript using CSS properties -->
             </div>
 
-            <!-- Container for game link buttons -->
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                <!-- Animated button for external game link -->
-                <button id="game-link-button" class="relative z-20 px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold text-xl rounded-full shadow-xl
-                                                   hover:scale-105 hover:shadow-2xl transition-all duration-300 ease-in-out
-                                                   transform active:scale-95 focus:outline-none focus:ring-4 focus:ring-purple-400">
-                    Add Your Game Link Here
-                </button>
-                <!-- Button to edit game links list -->
-                <button id="edit-links-button" class="px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg shadow-md
-                                                    hover:bg-gray-700 transition-colors duration-200 ease-in-out
-                                                    transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-gray-500">
-                    Edit Game Links
-                </button>
+            <!-- Overlay for text and buttons to ensure readability -->
+            <div
+                class="relative z-10 bg-black bg-opacity-70 rounded-xl p-8 max-w-3xl text-center shadow-lg border border-gray-700"
+            >
+                <!-- Scene description text -->
+                <div
+                    id="scene-description"
+                    class="text-lg mb-6 leading-relaxed text-gray-200"
+                ></div>
+
+                <!-- Container for choice buttons -->
+                <div
+                    id="choices-container"
+                    class="flex flex-wrap justify-center gap-4 mb-8"
+                >
+                    <!-- Choice buttons will be inserted here by JavaScript -->
+                </div>
+
+                <!-- Container for game link buttons -->
+                <div
+                    class="flex flex-col sm:flex-row justify-center items-center gap-4"
+                >
+                    <!-- Animated button for external game link -->
+                    <button
+                        id="game-link-button"
+                        class="relative z-20 px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold text-xl rounded-full shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 ease-in-out transform active:scale-95 focus:outline-none focus:ring-4 focus:ring-purple-400"
+                    >
+                        Add Your Game Link Here
+                    </button>
+                    <!-- Button to edit game links list -->
+                    <button
+                        id="edit-links-button"
+                        class="px-6 py-3 bg-gray-600 text-white font-semibold rounded-lg shadow-md hover:bg-gray-700 transition-colors duration-200 ease-in-out transform hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                    >
+                        Edit Game Links
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
 
-    <script>
+        <script>
         // Game data: scenes, descriptions, choices, and background styles (CSS gradients/colors)
         const gameData = {
             'start': {
@@ -466,100 +496,161 @@
             }
         };
 
-        // Default predefined list of game links
-        const defaultPredefinedGameLinks = [
-            { name: "Classic Arcade", url: "https://www.retrogames.cc/" },
-            { name: "Puzzle Master", url: "https://www.miniclip.com/games/genre-2/puzzle/" },
-            { name: "Adventure Quest", url: "https://www.kongregate.com/adventure-games" },
-            { name: "Strategy Zone", url: "https://www.addictinggames.com/strategy" },
-            { name: "Brain Teasers", url: "https://www.braingle.com/brainteasers.php" }
-        ];
+            // Default predefined list of game links
+            const defaultPredefinedGameLinks = [
+                { name: "Classic Arcade", url: "https://www.retrogames.cc/" },
+                {
+                    name: "Puzzle Master",
+                    url: "https://www.miniclip.com/games/genre-2/puzzle/",
+                },
+                {
+                    name: "Adventure Quest",
+                    url: "https://www.kongregate.com/adventure-games",
+                },
+                {
+                    name: "Strategy Zone",
+                    url: "https://www.addictinggames.com/strategy",
+                },
+                {
+                    name: "Brain Teasers",
+                    url: "https://www.braingle.com/brainteasers.php",
+                },
+            ];
 
-        let predefinedGameLinks = []; // This will hold the active list of game links
+            let predefinedGameLinks = []; // This will hold the active list of game links
 
-        // Get DOM elements
-        const backgroundLayersContainer = document.getElementById('background-layers-container');
-        const sceneDescription = document.getElementById('scene-description');
-        const choicesContainer = document.getElementById('choices-container');
-        const gameLinkButton = document.getElementById('game-link-button');
-        const editLinksButton = document.getElementById('edit-links-button');
+            // Get DOM elements
+            const backgroundLayersContainer = document.getElementById(
+                "background-layers-container",
+            );
+            const sceneDescription =
+                document.getElementById("scene-description");
+            const choicesContainer =
+                document.getElementById("choices-container");
+            const gameLinkButton = document.getElementById("game-link-button");
+            const editLinksButton =
+                document.getElementById("edit-links-button");
 
-        let currentSceneId = 'start'; // Initial scene
+            let currentSceneId = "start"; // Initial scene
 
-        // Function to render a scene
-        function renderScene(sceneId) {
-            const scene = gameData[sceneId];
-            if (!scene) {
-                console.error("Scene not found:", sceneId);
-                return;
+            // Function to render a scene
+            function renderScene(sceneId) {
+                const scene = gameData[sceneId];
+                if (!scene) {
+                    console.error("Scene not found:", sceneId);
+                    return;
+                }
+
+                // Reset the game link button on new scene load
+                gameLinkButton.textContent = "Add Your Game Link Here";
+                gameLinkButton.classList.remove(
+                    "bg-green-600",
+                    "from-green-600",
+                    "to-emerald-600",
+                );
+                gameLinkButton.classList.add(
+                    "bg-purple-600",
+                    "from-purple-600",
+                    "to-indigo-600",
+                );
+                gameLinkButton.onclick = showGameLinkSelectionModal; // Reset its click handler
+
+                // Fade out the old background
+                backgroundLayersContainer.style.opacity = "0";
+
+                setTimeout(() => {
+                    // Apply the new background style (CSS gradient/color)
+                    backgroundLayersContainer.style.backgroundImage =
+                        scene.backgroundStyle;
+                    backgroundLayersContainer.style.backgroundColor = ""; // Clear any solid color if gradient is used
+
+                    // Fade in the new background
+                    backgroundLayersContainer.style.opacity = "1";
+                }, 500); // Wait for the fade-out to complete before applying new style and fading in
+
+                // Update scene description
+                sceneDescription.innerHTML = scene.description.replace(
+                    /\n/g,
+                    "<br>",
+                ); // Use innerHTML to render line breaks and emojis
+
+                // Clear previous choices
+                choicesContainer.innerHTML = "";
+
+                // Create new choice buttons
+                scene.choices.forEach((choice) => {
+                    const button = document.createElement("button");
+                    button.textContent = choice.text;
+                    button.classList.add("choice-button"); // Apply Tailwind classes for styling
+                    button.onclick = () => {
+                        currentSceneId = choice.nextScene;
+                        renderScene(currentSceneId);
+                    };
+                    choicesContainer.appendChild(button);
+                });
             }
 
-            // Reset the game link button on new scene load
-            gameLinkButton.textContent = "Add Your Game Link Here";
-            gameLinkButton.classList.remove('bg-green-600', 'from-green-600', 'to-emerald-600');
-            gameLinkButton.classList.add('bg-purple-600', 'from-purple-600', 'to-indigo-600');
-            gameLinkButton.onclick = showGameLinkSelectionModal; // Reset its click handler
-
-            // Fade out the old background
-            backgroundLayersContainer.style.opacity = '0';
-
-            setTimeout(() => {
-                // Apply the new background style (CSS gradient/color)
-                backgroundLayersContainer.style.backgroundImage = scene.backgroundStyle;
-                backgroundLayersContainer.style.backgroundColor = ''; // Clear any solid color if gradient is used
-
-                // Fade in the new background
-                backgroundLayersContainer.style.opacity = '1';
-
-            }, 500); // Wait for the fade-out to complete before applying new style and fading in
-
-            // Update scene description
-            sceneDescription.innerHTML = scene.description.replace(/\n/g, '<br>'); // Use innerHTML to render line breaks and emojis
-
-            // Clear previous choices
-            choicesContainer.innerHTML = '';
-
-            // Create new choice buttons
-            scene.choices.forEach(choice => {
-                const button = document.createElement('button');
-                button.textContent = choice.text;
-                button.classList.add('choice-button'); // Apply Tailwind classes for styling
-                button.onclick = () => {
-                    currentSceneId = choice.nextScene;
-                    renderScene(currentSceneId);
-                };
-                choicesContainer.appendChild(button);
-            });
-        }
-
-        // Function to set the game link on the button
-        function setGameLink(link, name) {
-            // Basic URL validation
-            if (link.startsWith("http://") || link.startsWith("https://")) {
-                gameLinkButton.textContent = `Play ${name}!`; // Update button text
-                gameLinkButton.onclick = () => window.open(link, '_blank'); // Open in new tab
-                // Optionally, add a visual cue that the link is set
-                gameLinkButton.classList.add('bg-green-600', 'from-green-600', 'to-emerald-600');
-                gameLinkButton.classList.remove('bg-purple-600', 'from-purple-600', 'to-indigo-600');
-            } else {
-                displayMessage("Invalid game link provided. Please ensure it starts with http:// or https://", "error");
-            }
-        }
-
-        // Function to display the game link selection modal
-        function showGameLinkSelectionModal() {
-            // If no links are available, prompt user to add them
-            if (predefinedGameLinks.length === 0) {
-                displayMessage("No game links available. Please use 'Edit Game Links' to add some.", "info");
-                return;
+            // Function to set the game link on the button
+            function setGameLink(link, name) {
+                // Basic URL validation
+                if (link.startsWith("http://") || link.startsWith("https://")) {
+                    gameLinkButton.textContent = `Play ${name}!`; // Update button text
+                    gameLinkButton.onclick = () => window.open(link, "_blank"); // Open in new tab
+                    // Optionally, add a visual cue that the link is set
+                    gameLinkButton.classList.add(
+                        "bg-green-600",
+                        "from-green-600",
+                        "to-emerald-600",
+                    );
+                    gameLinkButton.classList.remove(
+                        "bg-purple-600",
+                        "from-purple-600",
+                        "to-indigo-600",
+                    );
+                } else {
+                    displayMessage(
+                        "Invalid game link provided. Please ensure it starts with http:// or https://",
+                        "error",
+                    );
+                }
             }
 
-            const modal = document.createElement('div');
-            modal.classList.add('fixed', 'inset-0', 'bg-black', 'bg-opacity-80', 'flex', 'items-center', 'justify-center', 'z-50', 'p-4');
+            // Function to display the game link selection modal
+            function showGameLinkSelectionModal() {
+                // If no links are available, prompt user to add them
+                if (predefinedGameLinks.length === 0) {
+                    displayMessage(
+                        "No game links available. Please use 'Edit Game Links' to add some.",
+                        "info",
+                    );
+                    return;
+                }
 
-            const modalContent = document.createElement('div');
-            modalContent.classList.add('bg-gray-800', 'rounded-xl', 'p-8', 'shadow-2xl', 'text-white', 'max-w-md', 'w-full', 'relative');
-            modalContent.innerHTML = `
+                const modal = document.createElement("div");
+                modal.classList.add(
+                    "fixed",
+                    "inset-0",
+                    "bg-black",
+                    "bg-opacity-80",
+                    "flex",
+                    "items-center",
+                    "justify-center",
+                    "z-50",
+                    "p-4",
+                );
+
+                const modalContent = document.createElement("div");
+                modalContent.classList.add(
+                    "bg-gray-800",
+                    "rounded-xl",
+                    "p-8",
+                    "shadow-2xl",
+                    "text-white",
+                    "max-w-md",
+                    "w-full",
+                    "relative",
+                );
+                modalContent.innerHTML = `
                 <h2 class="text-2xl font-bold mb-6 text-center">Choose Your Game</h2>
                 <div id="game-links-list" class="flex flex-col gap-4 mb-6 max-h-60 overflow-y-auto">
                     <!-- Game links will be inserted here -->
@@ -567,36 +658,63 @@
                 <button id="close-modal-button" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
             `;
 
-            const gameLinksList = modalContent.querySelector('#game-links-list');
+                const gameLinksList =
+                    modalContent.querySelector("#game-links-list");
 
-            // Populate the modal with predefined game links
-            predefinedGameLinks.forEach(game => {
-                const gameButton = document.createElement('button');
-                gameButton.textContent = game.name;
-                // Reusing choice-button styles for consistency
-                gameButton.classList.add('choice-button', 'w-full', 'bg-green-700', 'hover:bg-green-800');
-                gameButton.onclick = () => {
-                    setGameLink(game.url, game.name);
-                    modal.remove(); // Close modal after selection
-                };
-                gameLinksList.appendChild(gameButton);
-            });
+                // Populate the modal with predefined game links
+                predefinedGameLinks.forEach((game) => {
+                    const gameButton = document.createElement("button");
+                    gameButton.textContent = game.name;
+                    // Reusing choice-button styles for consistency
+                    gameButton.classList.add(
+                        "choice-button",
+                        "w-full",
+                        "bg-green-700",
+                        "hover:bg-green-800",
+                    );
+                    gameButton.onclick = () => {
+                        setGameLink(game.url, game.name);
+                        modal.remove(); // Close modal after selection
+                    };
+                    gameLinksList.appendChild(gameButton);
+                });
 
-            const closeModalButton = modalContent.querySelector('#close-modal-button');
-            closeModalButton.onclick = () => modal.remove(); // Close modal
+                const closeModalButton = modalContent.querySelector(
+                    "#close-modal-button",
+                );
+                closeModalButton.onclick = () => modal.remove(); // Close modal
 
-            modal.appendChild(modalContent);
-            document.body.appendChild(modal);
-        }
+                modal.appendChild(modalContent);
+                document.body.appendChild(modal);
+            }
 
-        // Function to display the modal for editing game links
-        function showEditGameLinksModal() {
-            const modal = document.createElement('div');
-            modal.classList.add('fixed', 'inset-0', 'bg-black', 'bg-opacity-80', 'flex', 'items-center', 'justify-center', 'z-50', 'p-4');
+            // Function to display the modal for editing game links
+            function showEditGameLinksModal() {
+                const modal = document.createElement("div");
+                modal.classList.add(
+                    "fixed",
+                    "inset-0",
+                    "bg-black",
+                    "bg-opacity-80",
+                    "flex",
+                    "items-center",
+                    "justify-center",
+                    "z-50",
+                    "p-4",
+                );
 
-            const modalContent = document.createElement('div');
-            modalContent.classList.add('bg-gray-800', 'rounded-xl', 'p-8', 'shadow-2xl', 'text-white', 'max-w-xl', 'w-full', 'relative');
-            modalContent.innerHTML = `
+                const modalContent = document.createElement("div");
+                modalContent.classList.add(
+                    "bg-gray-800",
+                    "rounded-xl",
+                    "p-8",
+                    "shadow-2xl",
+                    "text-white",
+                    "max-w-xl",
+                    "w-full",
+                    "relative",
+                );
+                modalContent.innerHTML = `
                 <h2 class="text-2xl font-bold mb-6 text-center">Edit Game Links (JSON Array)</h2>
                 <textarea id="game-links-textarea" class="w-full p-3 bg-gray-700 border border-gray-600 rounded-md text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-4"
                           placeholder='[{"name": "My Game 1", "url": "https://example.com/game1"}, {"name": "My Game 2", "url": "https://example.com/game2"}]'></textarea>
@@ -607,95 +725,146 @@
                 <button id="close-edit-modal-button" class="absolute top-4 right-4 text-gray-400 hover:text-white text-2xl">&times;</button>
             `;
 
-            const gameLinksTextarea = modalContent.querySelector('#game-links-textarea');
-            const saveLinksButton = modalContent.querySelector('#save-links-button');
-            const cancelLinksButton = modalContent.querySelector('#cancel-links-button');
-            const closeEditModalButton = modalContent.querySelector('#close-edit-modal-button');
+                const gameLinksTextarea = modalContent.querySelector(
+                    "#game-links-textarea",
+                );
+                const saveLinksButton =
+                    modalContent.querySelector("#save-links-button");
+                const cancelLinksButton = modalContent.querySelector(
+                    "#cancel-links-button",
+                );
+                const closeEditModalButton = modalContent.querySelector(
+                    "#close-edit-modal-button",
+                );
 
-            // Populate textarea with current links (if any)
-            gameLinksTextarea.value = JSON.stringify(predefinedGameLinks, null, 2);
+                // Populate textarea with current links (if any)
+                gameLinksTextarea.value = JSON.stringify(
+                    predefinedGameLinks,
+                    null,
+                    2,
+                );
 
-            saveLinksButton.onclick = () => {
-                try {
-                    const newLinks = JSON.parse(gameLinksTextarea.value);
-                    // Basic validation for the structure
-                    if (Array.isArray(newLinks) && newLinks.every(item => typeof item === 'object' && item !== null && 'name' in item && 'url' in item)) {
-                        predefinedGameLinks = newLinks;
-                        localStorage.setItem('customGameLinks', JSON.stringify(predefinedGameLinks)); // Save to local storage
-                        displayMessage("Game links updated successfully!", "info");
-                        modal.remove(); // Close modal
-                    } else {
-                        displayMessage("Invalid JSON format. Please ensure it's an array of objects with 'name' and 'url' properties.", "error");
+                saveLinksButton.onclick = () => {
+                    try {
+                        const newLinks = JSON.parse(gameLinksTextarea.value);
+                        // Basic validation for the structure
+                        if (
+                            Array.isArray(newLinks) &&
+                            newLinks.every(
+                                (item) =>
+                                    typeof item === "object" &&
+                                    item !== null &&
+                                    "name" in item &&
+                                    "url" in item,
+                            )
+                        ) {
+                            predefinedGameLinks = newLinks;
+                            localStorage.setItem(
+                                "customGameLinks",
+                                JSON.stringify(predefinedGameLinks),
+                            ); // Save to local storage
+                            displayMessage(
+                                "Game links updated successfully!",
+                                "info",
+                            );
+                            modal.remove(); // Close modal
+                        } else {
+                            displayMessage(
+                                "Invalid JSON format. Please ensure it's an array of objects with 'name' and 'url' properties.",
+                                "error",
+                            );
+                        }
+                    } catch (e) {
+                        displayMessage(
+                            "Error parsing JSON. Please check your syntax.",
+                            "error",
+                        );
+                        console.error("JSON parsing error:", e);
                     }
-                } catch (e) {
-                    displayMessage("Error parsing JSON. Please check your syntax.", "error");
-                    console.error("JSON parsing error:", e);
-                }
-            };
+                };
 
-            cancelLinksButton.onclick = () => modal.remove(); // Close modal without saving
-            closeEditModalButton.onclick = () => modal.remove(); // Close modal
+                cancelLinksButton.onclick = () => modal.remove(); // Close modal without saving
+                closeEditModalButton.onclick = () => modal.remove(); // Close modal
 
-            modal.appendChild(modalContent);
-            document.body.appendChild(modal);
-        }
-
-        // Function to display a custom message box (replaces alert)
-        function displayMessage(message, type = "info") {
-            const messageBox = document.createElement('div');
-            messageBox.classList.add('fixed', 'top-1/2', 'left-1/2', '-translate-x-1/2', '-translate-y-1/2',
-                                    'p-6', 'rounded-lg', 'shadow-xl', 'text-white', 'z-50', 'text-center',
-                                    'transition-all', 'duration-300', 'transform', 'scale-0');
-
-            if (type === "error") {
-                messageBox.classList.add('bg-red-700');
-            } else {
-                messageBox.classList.add('bg-blue-700');
+                modal.appendChild(modalContent);
+                document.body.appendChild(modal);
             }
 
-            messageBox.innerHTML = `<p class="text-lg mb-4">${message}</p><button class="px-4 py-2 bg-white text-gray-800 rounded-md hover:bg-gray-200">OK</button>`;
-            document.body.appendChild(messageBox);
+            // Function to display a custom message box (replaces alert)
+            function displayMessage(message, type = "info") {
+                const messageBox = document.createElement("div");
+                messageBox.classList.add(
+                    "fixed",
+                    "top-1/2",
+                    "left-1/2",
+                    "-translate-x-1/2",
+                    "-translate-y-1/2",
+                    "p-6",
+                    "rounded-lg",
+                    "shadow-xl",
+                    "text-white",
+                    "z-50",
+                    "text-center",
+                    "transition-all",
+                    "duration-300",
+                    "transform",
+                    "scale-0",
+                );
 
-            // Animate in
-            setTimeout(() => {
-                messageBox.classList.remove('scale-0');
-                messageBox.classList.add('scale-100');
-            }, 50); // Small delay for CSS transition to kick in
+                if (type === "error") {
+                    messageBox.classList.add("bg-red-700");
+                } else {
+                    messageBox.classList.add("bg-blue-700");
+                }
 
-            messageBox.querySelector('button').onclick = () => {
-                // Animate out and remove
-                messageBox.classList.remove('scale-100');
-                messageBox.classList.add('scale-0');
+                messageBox.innerHTML = `<p class="text-lg mb-4">${message}</p><button class="px-4 py-2 bg-white text-gray-800 rounded-md hover:bg-gray-200">OK</button>`;
+                document.body.appendChild(messageBox);
+
+                // Animate in
                 setTimeout(() => {
-                    messageBox.remove();
-                }, 300);
-            };
-        }
+                    messageBox.classList.remove("scale-0");
+                    messageBox.classList.add("scale-100");
+                }, 50); // Small delay for CSS transition to kick in
 
-        // Initialize game links from localStorage or use defaults
-        function initializeGameLinks() {
-            const storedLinks = localStorage.getItem('customGameLinks');
-            if (storedLinks) {
-                try {
-                    predefinedGameLinks = JSON.parse(storedLinks);
-                } catch (e) {
-                    console.error("Error parsing stored game links, using defaults:", e);
+                messageBox.querySelector("button").onclick = () => {
+                    // Animate out and remove
+                    messageBox.classList.remove("scale-100");
+                    messageBox.classList.add("scale-0");
+                    setTimeout(() => {
+                        messageBox.remove();
+                    }, 300);
+                };
+            }
+
+            // Initialize game links from localStorage or use defaults
+            function initializeGameLinks() {
+                const storedLinks = localStorage.getItem("customGameLinks");
+                if (storedLinks) {
+                    try {
+                        predefinedGameLinks = JSON.parse(storedLinks);
+                    } catch (e) {
+                        console.error(
+                            "Error parsing stored game links, using defaults:",
+                            e,
+                        );
+                        predefinedGameLinks = defaultPredefinedGameLinks;
+                    }
+                } else {
                     predefinedGameLinks = defaultPredefinedGameLinks;
                 }
-            } else {
-                predefinedGameLinks = defaultPredefinedGameLinks;
             }
-        }
 
-        // Set up event listeners
-        gameLinkButton.onclick = showGameLinkSelectionModal;
-        editLinksButton.onclick = showEditGameLinksModal;
+            // Set up event listeners
+            gameLinkButton.onclick = showGameLinkSelectionModal;
+            editLinksButton.onclick = showEditGameLinksModal;
 
-        // Initialize the game when the window loads
-        window.onload = function() {
-            initializeGameLinks(); // Load custom links first
-            renderScene(currentSceneId);
-        };
-    </script>
-</body>
+            // Initialize the game when the window loads
+            window.onload = function () {
+                initializeGameLinks(); // Load custom links first
+                renderScene(currentSceneId);
+            };
+        </script>
+        <!-- // D474designs | Modifications, and fixes by JOCV-III ///////
+                // All Rights Reserved /////// -->
+    </body>
 </html>
